@@ -1,35 +1,37 @@
-import sys
-import os
-import cv2
-import numpy as np
-
 import tensorflow as tf
-from tensorflow.keras.optimizers import SGD
-from tensorflow.keras.models import load_model
-from tensorflow.python.compiler.tensorrt import trt_convert as trt
-
-sys.path.append('../Models')
-sys.path.append('../Networks')
-sys.path.append('../Preprocess')
-
-from Network_Functions import DataGenerator_tflite
-
+# from tensorflow.lite.python.interpreter import OpResolverType
+from tflite_functions import DataGenerator_tflite
+# from tensorflow.keras.mixed_precision import global_policy, set_global_policy, Policy
+# import traceback
+# policy = global_policy()
+# if policy.name == 'float32':
+#     policy = Policy('mixed_float16')
+# set_global_policy(policy)
 
 model = "model.tflite"
 npy_dir = "../Images/NPY"
 
-
 batch_size = 2
 dataset = 'ViolentFlow-opt'
 
-interprete = tf.lite.Interpreter(model)
+interprete = tf.lite.Interpreter(model_path=model, experimental_preserve_all_tensors=True)
+
+#interprete = Interpreter(model_path=model) # ,
+#                                 model_content=None,
+#                                 experimental_delegates=None,
+#                                 num_threads=1,
+#                                 experimental_op_resolver_type=OpResolverType.AUTO,
+#                                 experimental_preserve_all_tensors=False)
 
 input_shape = interprete.get_input_details()[0]['shape']
 interprete.resize_tensor_input(0, input_shape, strict=True)
-interprete.allocate_tensors()
 
 input_details = interprete.get_input_details()[0]
 output_details = interprete.get_output_details()[0]
+print(input_details)
+print(output_details)
+
+interprete.allocate_tensors()
 
 # Generate input
 input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
@@ -47,4 +49,3 @@ interprete.invoke()
 predictions = interprete.get_tensor(output_details['index'])
 
 print(predictions)
-
