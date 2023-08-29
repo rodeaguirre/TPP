@@ -1,4 +1,5 @@
 import tensorflow as tf
+import tflite_runtime.interpreter as tflite
 # from tensorflow.lite.python.interpreter import OpResolverType
 from tflite_functions import DataGenerator_tflite
 # from tensorflow.keras.mixed_precision import global_policy, set_global_policy, Policy
