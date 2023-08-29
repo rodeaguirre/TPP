@@ -81,7 +81,7 @@ def Video2Npy(file_path, resize=(224, 224)):
 def Save2Npy(file_dir, save_dir):
     """Transfer all the videos and save them into specified directory
     Args:
-        file_dir: source folder of target videos
+        file_dir: video folder of target videos
         save_dir: destination folder of output .npy files
     """
     if not os.path.exists(save_dir):
@@ -103,8 +103,8 @@ def Save2Npy(file_dir, save_dir):
 
     return None
 
-directory = '../Images'
-source_path = '../Images/AVI'
-target_path = '../Images/NPY'
+directory = '../../Images'
+source_path = '../../Images/AVI'
+target_path = '../../Images/NPY'
 
 Save2Npy(file_dir=source_path, save_dir=target_path)
