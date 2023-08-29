@@ -33,7 +33,7 @@ parser = argparse.ArgumentParser()
 
 
 
-npy_dir = "../../Images/NPY"
+npy_dir = "../../media/Images/NPY"
 
 
 batch_size = 2

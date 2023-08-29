@@ -10,7 +10,7 @@ from tflite_functions import DataGenerator_tflite
 # set_global_policy(policy)
 
 model = "model.tflite"
-npy_dir = "../../Images/NPY"
+npy_dir = "../../media/Images/NPY"
 
 batch_size = 2
 dataset = 'ViolentFlow-opt'

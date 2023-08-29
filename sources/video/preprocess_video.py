@@ -103,8 +103,7 @@ def Save2Npy(file_dir, save_dir):
 
     return None
 
-directory = '../../Images'
-source_path = '../../Images/AVI'
-target_path = '../../Images/NPY'
+source_path = '../../media/Images/AVI'
+target_path = '../../media/Images/NPY'
 
 Save2Npy(file_dir=source_path, save_dir=target_path)
