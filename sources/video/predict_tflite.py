@@ -2,12 +2,18 @@ import tensorflow as tf
 # import tflite_runtime.interpreter as tflite
 # from tensorflow.lite.python.interpreter import OpResolverType
 from tflite_functions import DataGenerator_tflite
-
+import os
 
 model = "model.tflite"
 npy_dir = "../../media/Images/NPY"
 
-batch_size = 3
+# Obtén la lista de archivos en el directorio npy_dir
+archivos = os.listdir(npy_dir)
+
+# Usa una comprensión de lista para filtrar solo los archivos (no directorios)
+# archivos = [archivo for archivo in archivos if os.path.isfile(os.path.join(npy_dir, archivo))]
+
+batch_size = len(archivos)
 dataset = 'ViolentFlow-opt'
 interprete = tf.lite.Interpreter(model)
 
