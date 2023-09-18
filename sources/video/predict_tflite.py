@@ -1,5 +1,5 @@
 import tensorflow as tf
-import tflite_runtime.interpreter as tflite
+# import tflite_runtime.interpreter as tflite
 # from tensorflow.lite.python.interpreter import OpResolverType
 from tflite_functions import DataGenerator_tflite
 
