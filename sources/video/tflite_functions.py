@@ -141,7 +141,7 @@ class DataGenerator_tflite(Sequence):
 
     def dynamic_crop(self, video):
         # extract layer of optical flow from video
-        opt_flows = video[..., 5] ####################################################################
+        opt_flows = video[..., 3]
         # sum of optical flow magnitude of individual frame
         magnitude = np.sum(opt_flows, axis=0)
         # filter slight noise by threshold

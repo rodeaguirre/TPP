@@ -30,14 +30,14 @@ interprete.allocate_tensors()
 
 input_details = interprete.get_input_details()[0]
 output_details = interprete.get_output_details()[0]
-
+input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
+                                   batch_size_data=batch_size,
+                                   data_augmentation=False)
+batch_x, batch_y = input_model.__getitem__(0)  # Use index 0 to get the first batch
+# print(batch_x.shape)
 for i in range(cant_archivos):
     print('Video: ', i)
-    input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
-                                       batch_size_data=batch_size,
-                                       data_augmentation=False)
-    batch_x, batch_y = input_model.__getitem__(0)  # Use index 0 to get the first batch
-    # print(batch_x.shape)
+
 
     input_ = batch_x[i:i + 1]
     input_.reshape(input_shape)
