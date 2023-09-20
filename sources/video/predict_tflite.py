@@ -1,11 +1,10 @@
 import tensorflow as tf
-# import tflite_runtime.interpreter as tflite
-# from tensorflow.lite.python.interpreter import OpResolverType
-from tflite_functions import DataGenerator_tflite
+from tflite_functions import DataGenerator_tflite, mover_archivo
 import os
 
 model = "model.tflite"
 npy_dir = "../../media/Images/NPY"
+chau_dir = "../../media/Images/Discharge"
 
 # Obtén la lista de archivos en el directorio npy_dir
 archivos = os.listdir(npy_dir)
@@ -13,8 +12,14 @@ archivos = os.listdir(npy_dir)
 # Usa una comprensión de lista para filtrar solo los archivos (no directorios)
 # archivos = [archivo for archivo in archivos if os.path.isfile(os.path.join(npy_dir, archivo))]
 
-batch_size = len(archivos)
+cant_archivos = len(archivos)
+
+batch_size = cant_archivos
+print(cant_archivos)
 dataset = 'ViolentFlow-opt'
+
+# Obtén la lista de archivos en el directorio npy_dir
+
 interprete = tf.lite.Interpreter(model)
 
 input_shape = interprete.get_input_details()[0]['shape']
@@ -26,21 +31,26 @@ interprete.allocate_tensors()
 input_details = interprete.get_input_details()[0]
 output_details = interprete.get_output_details()[0]
 
+for i in range(cant_archivos):
+    print('Video: ', i)
+    input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
+                                       batch_size_data=batch_size,
+                                       data_augmentation=False)
+    batch_x, batch_y = input_model.__getitem__(0)  # Use index 0 to get the first batch
+    # print(batch_x.shape)
 
-# Generate input
-input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
-                                   batch_size_data=batch_size,
-                                   data_augmentation=False)
-batch_x, batch_y = input_model.__getitem__(0)  # Use index 0 to get the first batch
-print(batch_x.shape)
-
-
-for i in range(batch_size):
-    input_ = batch_x[i:i+1]
-    print(input_.shape)
+    input_ = batch_x[i:i + 1]
     input_.reshape(input_shape)
     interprete.set_tensor(input_details['index'], input_)
     interprete.invoke()
     predictions = interprete.get_tensor(output_details['index'])
-    print(predictions)
+    file_name = input_model.dirs[i]
+
+    print(file_name, predictions)
+
+    # origen = os.path.join(npy_dir, file_name)
+    # destino = os.path.join(chau_dir, file_name)
+
+    # resultado = mover_archivo(origen, destino)
+
 
