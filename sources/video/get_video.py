@@ -1,11 +1,11 @@
 import subprocess
 
 # Comando que deseas ejecutar (por ejemplo, "ls" para listar archivos en el directorio actual)
-comando_video = "libcamera-vid -o test.avi -t 5000 --width 224 --height 224"
-comando_ls = "ls"
+comando_video = "libcamera-vid -o ../../media/Images/AVI/test.avi -t 5000 --width 224 --height 224"
+# comando_ls = "ls"
 # Ejecuta el comando y captura la salida
 subprocess.run(comando_video, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
+'''
 resultado = subprocess.run(comando_ls, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
 # Verifica si el comando se ejecutó correctamente
@@ -15,3 +15,4 @@ if resultado.returncode == 0:
 else:
     print("Error al ejecutar el comando:")
     print(resultado.stderr)
+'''
