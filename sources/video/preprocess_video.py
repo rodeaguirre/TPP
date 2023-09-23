@@ -4,6 +4,22 @@ import matplotlib.pyplot as plt
 import os
 from tqdm import tqdm
 
+
+def check_video_access(video_path):
+    cap = cv2.VideoCapture(video_path)
+
+    if not cap.isOpened():
+        print("Error: No se puede abrir el archivo de video.")
+    else:
+        while True:
+            ret, frame = cap.read()
+            if not ret:
+                break
+            # Procesa el frame aquí
+
+        cap.release()
+
+
 def uniform_sampling(video, target_frames=64):
     # print("uniform_sampling")
     # get total frames of input video and calculate sampling interval
@@ -77,6 +93,7 @@ def Save2Npy(file_dir, save_dir):
         # Get dest
         save_path = os.path.join(save_dir, video_name + '.npy')
         # Load and preprocess video
+        check_video_access(video_path)
         data = Video2Npy(file_path=video_path, resize=(224, 224))
         data = np.uint8(data)
         # Save as .npy file
