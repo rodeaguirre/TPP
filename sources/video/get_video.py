@@ -1,9 +1,42 @@
+import picamera
+import cv2
+import numpy as np
+
+resize_dim = (224, 224)
+fps = 30
+# Configura la cámara de Raspberry Pi
+camera = picamera.PiCamera()
+camera.resolution = resize_dim
+
+# Inicia la grabación en formato H.264
+camera.start_recording('my_video.h264')
+camera.wait_recording(60)
+camera.stop_recording()
+
+# Convierte el video H.264 a AVI
+input_video = cv2.VideoCapture('my_video.h264')
+output_video = cv2.VideoWriter('my_video.avi', cv2.VideoWriter_fourcc(*'XVID'), fps, resize_dim)
+
+while True:
+    ret, frame = input_video.read()
+    if not ret:
+        break
+    output_video.write(frame)
+
+input_video.release()
+output_video.release()
+
+print("Conversión a AVI completa.")
+
+'''
 import sys
 import os
 import shutil
 from time import time
 import cv2
 import datetime
+
+
 
 class Ctes:
     DURATION_VIDEO_CUTS = 5
@@ -75,7 +108,7 @@ def getVideo(video_dir, fps):
     cv2.destroyAllWindows()
     return save_video_path
 
-video_dir = '../Preprocess/Video_Webcam/AVI'
+video_dir = 'AVI'
 
 num_videos = 1
 fps = get_camera_fps()
@@ -89,3 +122,4 @@ for i in range(1, num_videos + 1):
     delta_time = time() - time_before
     print("Tiempo de getVideo: ", delta_time)
 
+'''
