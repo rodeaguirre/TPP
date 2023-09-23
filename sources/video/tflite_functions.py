@@ -5,6 +5,7 @@ from tensorflow.keras import utils
 from tensorflow.keras.utils import Sequence
 import shutil
 
+
 ########################################################
 def mover_archivo(origen, destino):
     try:
