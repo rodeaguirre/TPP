@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import matplotlib.pyplot as plt
 import os
 from tqdm import tqdm
 
@@ -101,7 +100,3 @@ def Save2Npy(file_dir, save_dir):
 
     return None
 
-source_path = '../../media/Images/AVI'
-target_path = '../../media/Images/NPY'
-
-Save2Npy(file_dir=source_path, save_dir=target_path)
