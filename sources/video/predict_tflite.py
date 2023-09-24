@@ -48,5 +48,5 @@ def predict_model(model, npy_dir):
         # destino = os.path.join(chau_dir, file_name)
 
         # resultado = mover_archivo(origen, destino)
-
+    return predictions
 
