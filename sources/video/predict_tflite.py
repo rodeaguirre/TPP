@@ -50,3 +50,11 @@ def predict_model(model, npy_dir):
         # resultado = mover_archivo(origen, destino)
     return predictions
 
+
+model = "model.tflite"
+avi_dir = '../../media/Images/AVI'
+npy_dir = "../../media/Images/NPY"
+
+
+predictions = predict_model(model, npy_dir)
+print(predictions)
