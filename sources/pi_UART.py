@@ -2,7 +2,7 @@ import serial
 
 # Define el puerto serial y la velocidad de comunicación
 puerto = '/dev/ttyS0'  # Puerto UART en Raspberry Pi 4
-velocidad = 115200  # Velocidad en baudios, ajusta según sea necesario
+velocidad = 9600  # Velocidad en baudios, ajusta según sea necesario
 
 # Inicializa el objeto Serial
 ser = serial.Serial(puerto, velocidad)
