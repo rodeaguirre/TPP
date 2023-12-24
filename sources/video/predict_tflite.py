@@ -51,10 +51,10 @@ def predict_model(model, npy_dir):
     return predictions
 
 
-model = "model.tflite"
-avi_dir = '../../media/Images/AVI'
-npy_dir = "../../media/Images/NPY"
+#model = "model.tflite"
+#avi_dir = '../../media/Images/AVI'
+#npy_dir = "../../media/Images/NPY"
 
 
-predictions = predict_model(model, npy_dir)
-print(predictions)
+#predictions = predict_model(model, npy_dir)
+#print(predictions)
