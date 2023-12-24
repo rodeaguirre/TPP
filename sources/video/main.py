@@ -1,10 +1,14 @@
 from get_video import get_video, remove_avi, remove_npy
 from predict_tflite import predict_model
 from preprocess_video import Save2Npy
+from pi_UART import UART_init,UART_print
+
 
 model = "model.tflite"
 avi_dir = '../../media/Images/AVI'
 npy_dir = "../../media/Images/NPY"
+
+UART_init()
 
 print("get_video")
 get_video()
@@ -16,3 +20,5 @@ print("remove_avi")
 remove_avi()
 print("remove_npy")
 remove_npy()
+
+UART_print(predictions)
