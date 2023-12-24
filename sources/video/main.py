@@ -10,7 +10,7 @@ npy_dir = "../../media/Images/NPY"
 
 UART_init()
 
-print("get_video")
+print("Get_video")
 get_video()
 print("Save2Npy")
 Save2Npy(file_dir=avi_dir, save_dir=npy_dir)
