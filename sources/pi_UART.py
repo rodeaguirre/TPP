@@ -11,6 +11,7 @@ try:
     while True:
         # Escritura por UART
         mensaje = input("Ingrese el mensaje a enviar (o 'exit' para salir): ")
+        print("Hola")
         if mensaje.lower() == 'exit':
             break
         ser.write(mensaje.encode())
@@ -19,9 +20,9 @@ try:
         # Lectura por UART
         datos_recibidos = ser.readline().decode().strip()
         if datos_recibidos:
-            mensaje = input("Mansaje enviado.")
+            input("Mansaje enviado.")
             # Imprime los datos recibidos
-            print("Datos recibidos:", datos_recibidos)
+            input("Datos recibidos:{datos_recibidos}")
 
             # Envía los datos recibidos de vuelta
             ser.write(datos_recibidos.encode())
