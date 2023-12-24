@@ -9,12 +9,17 @@ def UART_init():
     ser = serial.Serial(puerto, velocidad)
     print("UART inicializado.")
 
-def UART_print(mensaje):
+def UART_print(mensajes):
     global ser
 
     if ser is not None:
-        ser.write(mensaje.encode())
-        print("UART: Mensaje enviado: {}".format(mensaje))
+
+        print("UART: Mensaje enviado:")
+        for mensaje in mensajes:
+            mensaje = mensaje.strip()
+            ser.write(mensaje.encode())
+            print(mensaje)
+        #ser.write(mensaje.encode())
 
 def UART_close():
     global ser
