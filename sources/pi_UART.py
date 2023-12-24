@@ -21,6 +21,9 @@ try:
         # Imprime los datos recibidos
         print("Datos recibidos:", datos_recibidos)
 
+        # Envía los datos recibidos de vuelta
+        ser.write(datos_recibidos.encode())
+
 except KeyboardInterrupt:
     # Maneja la interrupción del teclado (Ctrl+C)
     print("\nInterrupción del teclado. Cerrando la comunicación UART.")
