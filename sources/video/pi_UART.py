@@ -17,7 +17,7 @@ def UART_print(mensajes):
         print("UART: Mensaje enviado:")
         for mensaje in mensajes:
             #mensaje = mensaje.strip()
-            ser.write(mensaje)#.encode())
+            ser.write(mensaje.encode())
             print(mensaje)
         #ser.write(mensaje.encode())
 
