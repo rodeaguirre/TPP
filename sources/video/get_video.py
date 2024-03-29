@@ -16,10 +16,23 @@ def get_video():
         subprocess.run(comando_video_4, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         print("Comando 4")
 
+
 def remove_avi():
-    comando_remove = "rm ../../media/Images/AVI/video.avi"
-    subprocess.run(comando_remove, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    archivo_a_eliminar = "../../media/Images/AVI/video.avi"
+    if os.path.exists(archivo_a_eliminar):
+        comando_remove = f"rm {archivo_a_eliminar}"
+        subprocess.run(comando_remove, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        print(f"Archivo {archivo_a_eliminar} eliminado.")
+    else:
+        print(f"El archivo {archivo_a_eliminar} no existe, no se puede eliminar.")
+
 
 def remove_npy():
-    comando_remove = "rm ../../media/Images/NPY/video.npy"
-    subprocess.run(comando_remove, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    archivo_a_eliminar = "../../media/Images/NPY/video.npy"
+
+    if os.path.exists(archivo_a_eliminar):
+        comando_remove = f"rm {archivo_a_eliminar}"
+        subprocess.run(comando_remove, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        print(f"Archivo {archivo_a_eliminar} eliminado.")
+    else:
+        print(f"El archivo {archivo_a_eliminar} no existe, no se puede eliminar.")
