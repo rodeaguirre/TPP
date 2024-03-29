@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import os
-from tqdm import tqdm
+#from tqdm import tqdm
 
 
 def uniform_sampling(video, target_frames=64):
@@ -69,7 +69,8 @@ def Save2Npy(file_dir, save_dir):
         os.makedirs(save_dir)
     # List the files
     videos = os.listdir(file_dir)
-    for v in tqdm(videos):
+    #for v in tqdm(videos):
+    for v in videos:
         # Split video name
         video_name = v.split('.')[0]
         # Get src
