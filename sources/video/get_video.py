@@ -1,5 +1,7 @@
 import subprocess
 import os
+
+
 def get_video():
     comando_video_1 = "libcamera-vid -o ../../media/Images/AVI/video.h264 -t 5000 --width 224 --height 224 --framerate 60"
     subprocess.run(comando_video_1, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
