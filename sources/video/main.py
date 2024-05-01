@@ -40,7 +40,10 @@ for i in range(3):
     print("Save2Npy")
     Save2Npy(file_dir=avi_dir, save_dir=npy_dir)
     print("predict_model")
+    inicio = time.time()
     predictions = predict_model(model, npy_dir)
+    tiempo_transcurrido = time.time() - inicio
+    print(tiempo_transcurrido)
     #UART_print(predictions)
     print("  --  \n")
 
