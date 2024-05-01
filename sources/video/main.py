@@ -44,9 +44,9 @@ for i in range(3):
     #UART_print(predictions)
     print("  --  \n")
 
-    if predictions[1] < 40:
+    if predictions[0][0] < 40:
         blink_light(pin_G)
-    elif predictions[1] >= 40 & predictions[1] < 55:
+    elif predictions[0][0] >= 40 & predictions[0][0] < 55:
         blink_light(pin_Y)
     else:
         blink_light(pin_R)
