@@ -45,10 +45,11 @@ for _ in range(1):
     threads.append(thread)
     thread.start()
     time.sleep(15)
-tiempo_transcurrido = time.time() - inicio
-print(tiempo_transcurrido)
+
 # Esperar a que todos los threads terminen
 for thread in threads:
     thread.join()
 
 print("All threads have finished.")
+tiempo_transcurrido = time.time() - inicio
+print(tiempo_transcurrido)
