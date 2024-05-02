@@ -2,24 +2,7 @@ from get_video import get_video, remove_avi, remove_npy
 from predict_tflite import predict_model
 from preprocess_video import Save2Npy
 #from pi_UART import UART_init,UART_print
-import RPi.GPIO as GPIO
 import time
-
-########Semaforo###########
-GPIO.setmode(GPIO.BCM)
-pin_R = 17
-pin_Y = 27
-pin_G = 22
-GPIO.setup(pin_R, GPIO.OUT)
-GPIO.setup(pin_Y, GPIO.OUT)
-GPIO.setup(pin_G, GPIO.OUT)
-
-def blink_light(pin):
-    GPIO.output(pin, GPIO.HIGH)
-    time.sleep(5)
-    GPIO.output(pin, GPIO.LOW)
-#############################
-
 
 
 model = "model.tflite"
@@ -46,10 +29,3 @@ for i in range(3):
     print(tiempo_transcurrido)
     #UART_print(predictions)
     print("  --  \n")
-
-    if predictions[0][0] < 40:
-        blink_light(pin_G)
-    elif predictions[0][0] >= 40 & predictions[0][0] < 55:
-        blink_light(pin_Y)
-    else:
-        blink_light(pin_R)

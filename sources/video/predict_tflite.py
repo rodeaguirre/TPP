@@ -2,7 +2,23 @@ import tensorflow as tf
 from tflite_functions import DataGenerator_tflite, mover_archivo
 import os
 from get_video import remove_npy
+import RPi.GPIO as GPIO
+import time
 
+########Semaforo###########
+GPIO.setmode(GPIO.BCM)
+pin_R = 17
+pin_Y = 27
+pin_G = 22
+GPIO.setup(pin_R, GPIO.OUT)
+GPIO.setup(pin_Y, GPIO.OUT)
+GPIO.setup(pin_G, GPIO.OUT)
+
+def blink_light(pin):
+    GPIO.output(pin, GPIO.HIGH)
+    time.sleep(5)
+    GPIO.output(pin, GPIO.LOW)
+#############################
 
 def predict_model(model, npy_dir):
     # Obtén la lista de archivos en el directorio npy_dir
@@ -48,7 +64,14 @@ def predict_model(model, npy_dir):
         # destino = os.path.join(chau_dir, file_name)
 
         # resultado = mover_archivo(origen, destino)
+        if predictions[0][0] < 40:
+            blink_light(pin_G)
+        elif predictions[0][0] >= 40 & predictions[0][0] < 55:
+            blink_light(pin_Y)
+        else:
+            blink_light(pin_R)
         return predictions
+
     return [1,1]
 
 #model = "model.tflite"

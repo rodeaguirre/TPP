@@ -45,7 +45,6 @@ for _ in range(4):
     threads.append(thread)
     thread.start()
     time.sleep(15)
-
 tiempo_transcurrido = time.time() - inicio
 print(tiempo_transcurrido)
 # Esperar a que todos los threads terminen
