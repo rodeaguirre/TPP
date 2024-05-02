@@ -44,7 +44,6 @@ for _ in range(4):
     thread = threading.Thread(target=predict_model, args=(model, npy_dir))
     threads.append(thread)
     thread.start()
-    time.sleep(15)
 
 # Esperar a que todos los threads terminen
 for thread in threads:
