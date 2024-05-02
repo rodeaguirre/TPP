@@ -4,7 +4,7 @@ import os
 from get_video import remove_npy
 import RPi.GPIO as GPIO
 import time
-
+os.environ["OMP_NUM_THREADS"] = "4"  ####################################
 ########Semaforo###########
 GPIO.setmode(GPIO.BCM)
 pin_R = 17
@@ -36,7 +36,7 @@ def predict_model(model, npy_dir):
     # Obtén la lista de archivos en el directorio npy_dir
 
     interprete = tf.lite.Interpreter(model)
-    interprete.set_num_threads(4) ####################################
+    #interprete.set_num_threads(4) ####################################
     input_shape = interprete.get_input_details()[0]['shape']
 
     # print(input_shape)
