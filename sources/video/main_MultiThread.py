@@ -39,7 +39,7 @@ Save2Npy(file_dir=avi_dir, save_dir=npy_dir)
 # Crear y ejecutar los threads
 threads = []
 inicio = time.time()
-for _ in range(3):
+for _ in range(4):
     #thread = threading.Thread(target=inference_thread, args=(model_path, input_data))
     thread = threading.Thread(target=predict_model, args=(model, npy_dir))
     threads.append(thread)
