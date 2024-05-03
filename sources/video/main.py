@@ -5,7 +5,7 @@ from preprocess_video import Save2Npy
 import time
 
 
-model = "model.tflite"
+model = "model_111023.tflite"
 avi_dir = '../../media/Images/AVI'
 npy_dir = "../../media/Images/NPY"
 
