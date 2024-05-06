@@ -13,7 +13,7 @@ npy_dir = "../../media/Images/NPY"
 
 
 
-for i in range(10):
+for i in range(3):
     print("remove_avi")
     remove_avi()
     print("remove_npy")
