@@ -68,7 +68,7 @@ def predict_model(model, npy_dir):
         if aux < 40:
             blink_light(pin_G)
             print('green')
-        elif aux >= 40 & aux < 55:
+        elif 40 <= aux < 55:
             blink_light(pin_Y)
             print('yellow')
         else:
