@@ -5,8 +5,7 @@ from get_video import remove_npy
 import RPi.GPIO as GPIO
 import time
 os.environ["OMP_NUM_THREADS"] = "4"  ####################################
-
-########Semaforo###########
+os. environ['TF_CPP_MIN_LOG_LEVEL'] = '2'########Que no imprima errores a menos que sean fatales###########
 GPIO.setmode(GPIO.BCM)
 pin_R = 17
 pin_Y = 27
