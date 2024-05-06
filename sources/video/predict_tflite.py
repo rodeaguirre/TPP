@@ -65,9 +65,10 @@ def predict_model(model, npy_dir):
         # destino = os.path.join(chau_dir, file_name)
 
         # resultado = mover_archivo(origen, destino)
-        if predictions[0][0] < 40:
+        aux = predictions[0][1]*100
+        if aux < 40:
             blink_light(pin_G)
-        elif predictions[0][0] >= 40 & predictions[0][0] < 55:
+        elif aux >= 40 & aux < 55:
             blink_light(pin_Y)
         else:
             blink_light(pin_R)
