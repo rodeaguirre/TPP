@@ -49,7 +49,7 @@ def predict_model(model, npy_dir):
     input_model = DataGenerator_tflite(directory=npy_dir.format(dataset),
                                        batch_size_data=batch_size)
     batch_x = input_model.__getitem__(0)  # Use index 0 to get the first batch
-
+    aux = 0
     for i in range(cant_archivos):
         print('Video: ', i)
         input_ = batch_x[i:i + 1]
@@ -59,19 +59,23 @@ def predict_model(model, npy_dir):
         predictions = interprete.get_tensor(output_details['index'])
         file_name = input_model.dirs[i]
 
-        print("Prob. de Violencia en el video",file_name, "->", predictions)
+        print("Prob. de Violencia en el video", file_name, "->", predictions)
 
         # origen = os.path.join(npy_dir, file_name)
         # destino = os.path.join(chau_dir, file_name)
 
         # resultado = mover_archivo(origen, destino)
-        aux = predictions[0][1]*100
+        aux = predictions[0][0]*100
+        print(aux)
         if aux < 40:
             blink_light(pin_G)
+            print('green')
         elif aux >= 40 & aux < 55:
             blink_light(pin_Y)
+            print('yellow')
         else:
             blink_light(pin_R)
+            print('red')
         return predictions
 
     return [1,1]
